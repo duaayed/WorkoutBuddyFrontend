@@ -3,15 +3,26 @@ import ax from 'axios'
 
 
 const WorkoutForm = ({ show, setShow }) => {
+    
+    
     const [title, setTitle] = useState('')
     const [load, setLoad] = useState('')
     const [reps, setReps] = useState('')
     const [error, setError] = useState(null)
+    
+    
     const handleSubmit = async (e) => {
+        
         e.preventDefault()// to prevent vanilla js -> reload the page after submitting
+        
         const workout = { title, load, reps }
+        const users = JSON.parse(localStorage.getItem('user'))
+
         try {
-            await ax.post(import.meta.env.VITE_URI + "/api/workouts", workout);
+            // eslint-disable-next-line no-unused-vars
+            const response = await ax.post(import.meta.env.VITE_URI + "/api/workouts", workout, { headers: {
+                "Authorization" : `Bearer ${users.token}`
+            }});
             setError(null)
             setTitle('')
             setLoad('')

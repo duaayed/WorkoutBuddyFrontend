@@ -108,3 +108,25 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+.user{
+  display: flex;
+  left: 2%;
+}
+.user span,.user Link{
+  margin: 5px 10px;
+}
+button.nav-item{
+  border: none;
+  background-color:white;
+  color: #1aac83;
+  cursor: pointer;
+}
+.user span{
+  color: #555;
+}
+.nav-item{
+  margin: 5px 10px;
+}
+nav{
+  position: initial;
+}

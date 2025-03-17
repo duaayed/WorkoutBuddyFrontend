@@ -3,8 +3,15 @@ import ax from 'axios'
 import { MdDelete } from "react-icons/md"; //react icon
 
 const WorkoutDetails = ({ workout, show, setShow }) => { // this is another format of props (destructuring)
+   
+    const users = JSON.parse(localStorage.getItem('user'))
+
     const handleClick = async () => {
-        const response = await ax.delete(import.meta.env.VITE_URI + '/api/workouts/' + workout._id)
+   
+        const response = await ax.delete(import.meta.env.VITE_URI + '/api/workouts/' + workout._id,{ headers: {
+            "Authorization" : `Bearer ${users.token}`
+        }})
+   
         if (response) {
         setShow(!show)
         }
